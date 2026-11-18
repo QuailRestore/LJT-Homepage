@@ -1,20 +1,91 @@
+# Basic Site Settings
 locale                   : "en-US"
-
-# Site Settings
+site_theme               : "default" # The available themes options are "default", "air", "sunrise", "mint", "dirt" and "contrast"
 title                    : "Junteng Liu"
 title_separator          : "-"
 name                     : "Junteng Liu"
 description              : "First-year PhD candidate at HKUST NLP Group. Research focuses on natural language processing and machine learning, including LLM Reasoning and Reinforcement Learning, Hallucination in Vision-Language Models (VLM), and LLM Truthfulness and Interpretability."
-url                      : "https://quailrestore.github.io"
-baseurl                  : "/LJT-Homepage"
+url                      : "https://quailrestore.github.io" # the base hostname & protocol for your site
+baseurl                  : "/LJT-Homepage" # the subpath of your site
 repository               : "QuailRestore/LJT-Homepage"
-teaser                   : ""
+
+# Site Author - The following control what appear as part of the author content on the side bar.
+author:
+  # Biographic information
+  avatar           : ""
+  name             : "Junteng Liu"
+  pronouns         :
+  bio              : "First-year PhD candidate at HKUST NLP Group. Research focuses on natural language processing and machine learning."
+  location         : "Hong Kong"
+  employer         : "Hong Kong University of Science and Technology"
+  uri              :
+  email            : "jliugi@connect.ust.hk"
+
+  # Academic websites
+  academia         :
+  arxiv            :
+  googlescholar    : "https://scholar.google.com/citations?hl=en&user=tbK9jl4AAAAJ&view_op=list_works&sortby=pubdate"
+  inspire-hep      :
+  impactstory      :
+  orcid            :
+  semantic         :
+  ssrn             :
+  pubmed           :
+  researchgate     :
+  scopus           :
+  zotero           :
+
+  # Repositories and software development
+  bitbucket        :
+  codepen          :
+  dribbble         :
+  github           : "Vicent0205"
+  kaggle           :
+  stackoverflow    :
+
+  # Social media
+  artstation       :
+  bluesky          :
+  facebook         :
+  flickr           :
+  foursquare       :
+  goodreads        :
+  google_plus      :
+  keybase          :
+  instagram        :
+  lastfm           :
+  linkedin         :
+  mastodon         :
+  medium           :
+  pinterest        :
+  soundcloud       :
+  steam            :
+  telegram         :
+  tumblr           :
+  twitter          : "junteng88716710"  # Username for X / Twitter
+  vine             :
+  weibo            :
+  wikipedia        :
+  xing             :
+  youtube          :
+  zhihu            :
+
+# Publication Category - The following the list of publication categories and their headings
+publication_category:
+  books:
+    title: 'Books'
+  manuscripts:
+    title: 'Journal Articles'
+  conferences:
+    title: 'Conference Papers'
+
+# Site Settings
+teaser                   :
 breadcrumbs              : false
 words_per_minute         : 160
 future                   : true
 read_more                : "disabled"
 talkmap_link             : false
-
 comments:
   provider               :
   disqus:
@@ -23,12 +94,26 @@ comments:
     server               :
   facebook:
     appid                :
-    num_posts            : 5
-    colorscheme          : "light"
-  staticman:
-    branch               : "master"
-    endpoint             : ""
+    num_posts            :
+    colorscheme          :
+staticman:
+  allowedFields          : ['name', 'email', 'url', 'message']
+  branch                 : "gh-pages"
+  commitMessage          : "New comment."
+  filename               : comment-{@timestamp}
+  format                 : "yml"
+  moderation             : true
+  path                   : "_data/comments/{options.slug}"
+  requiredFields         : ['name', 'email', 'message']
+  transforms:
+    email                : "md5"
+  generatedFields:
+    date:
+      type               : "date"
+      options:
+        format           : "iso8601"
 atom_feed:
+  hide                   : false
   path                   :
 
 # SEO Related
@@ -45,8 +130,10 @@ facebook:
   app_id                 :
   publisher              :
 og_image                 :
+og_description           :
+# For specifying social profiles
 social:
-  type                   : "Person"
+  type                   : Person
   name                   : "Junteng Liu"
   links:
     - "https://github.com/Vicent0205"
@@ -54,57 +141,23 @@ social:
 
 # Analytics
 analytics:
-  provider               : false
+  provider               : "false" # false (default), "google", "google-universal", "google-analytics-4", "custom"
   google:
     tracking_id          :
-
-# Site Author
-author:
-  name             : "Junteng Liu"
-  avatar           : ""
-  bio              : "First-year PhD candidate at HKUST NLP Group. Research focuses on natural language processing and machine learning."
-  location         : "Hong Kong"
-  employer         : "Hong Kong University of Science and Technology"
-  email            : "jliugi@connect.ust.hk"
-  googlescholar    : "https://scholar.google.com/citations?hl=en&user=tbK9jl4AAAAJ&view_op=list_works&sortby=pubdate"
-  github           : "Vicent0205"
-  twitter          : "junteng88716710"
-  uri              :
-  bitbucket        :
-  codepen          :
-  dribbble         :
-  flickr           :
-  facebook         :
-  foursquare       :
-  google_plus      :
-  keybase          :
-  instagram        :
-  lastfm           :
-  linkedin         :
-  orcid            :
-  pinterest        :
-  soundcloud       :
-  stackoverflow    :
-  steam            :
-  tumblr           :
-  vine             :
-  weibo            :
-  xing             :
-  youtube          :
-  wikipedia        :
 
 # Reading Files
 include:
   - .htaccess
+  - _pages
+  - files
 exclude:
   - "*.sublime-project"
   - "*.sublime-workspace"
   - .asset-cache
   - .bundle
+  - .github
   - .jekyll-assets-cache
   - .sass-cache
-  - .github
-  - .devcontainer
   - assets/js/_main.js
   - assets/js/plugins
   - assets/js/vendor
@@ -117,15 +170,14 @@ exclude:
   - Gruntfile.js
   - gulpfile.js
   - LICENSE
-  - markdown_generator
-  - package.json
+  - local
+  - log
+  - node_modules
+  - package.json*
   - Rakefile
   - README
   - tmp
-  - scripts
-  - talkmap.py
-  - talkmap.ipynb
-  - talkmap_out.ipynb
+  - vendor
 keep_files:
   - .git
   - .svn
@@ -144,13 +196,14 @@ kramdown:
   input: GFM
   hard_wrap: false
   auto_ids: true
+  header_links: true
   footnote_nr: 1
   entity_output: as_char
   toc_levels: 1..6
   smart_quotes: lsquo,rsquo,ldquo,rdquo
   enable_coderay: false
 
-# Collections
+# These settings control the types of collections used by the template
 collections:
   teaching:
     output: true
@@ -165,7 +218,7 @@ collections:
     output: true
     permalink: /:collection/:path/
 
-# Defaults
+# These settings control how pages and collections are included in the site
 defaults:
   # _posts
   - scope:
@@ -228,19 +281,37 @@ sass:
 
 # Outputting
 permalink: /:categories/:title/
-timezone:
+timezone: Etc/UTC
 
 # Plugins
 plugins:
+  - jekyll-feed
+  - jekyll-gist
   - jekyll-paginate
   - jekyll-sitemap
-  - jekyll-gist
-  - jekyll-feed
   - jekyll-redirect-from
   - jemoji
+
+# Mimic GitHub Pages with --safe
+whitelist:
+  - jekyll-feed
+  - jekyll-gist
+  - jekyll-paginate
+  - jekyll-sitemap
+  - jekyll-redirect-from
+  - jemoji
+
+# Archives
+category_archive:
+  type: liquid
+  path: /categories/
+tag_archive:
+  type: liquid
+  path: /tags/
 
 # HTML Compression
 compress_html:
   clippings: all
+  comments: ["<!-- ", " -->"]
   ignore:
     envs: development
