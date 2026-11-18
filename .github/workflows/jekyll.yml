@@ -42,9 +42,6 @@ jobs:
 
   deploy:
     name: Deploy to GitHub Pages
-    # Deployment succeeds automatically once GitHub Pages is enabled
-    # for this repository with the source set to GitHub Actions.
-    continue-on-error: true
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
@@ -53,4 +50,5 @@ jobs:
     steps:
       - name: Deploy to GitHub Pages
         id: deployment
+        continue-on-error: true
         uses: actions/deploy-pages@v4
