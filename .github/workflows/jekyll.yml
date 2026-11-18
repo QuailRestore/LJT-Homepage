@@ -1,8 +1,8 @@
-name: Deploy Jekyll site to Pages
+name: Deploy Academic Pages template site to Pages
 
 on:
   push:
-    branches: ["master"]
+    branches: [master]
   workflow_dispatch:
 
 permissions:
@@ -24,7 +24,7 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: "20"
-      - name: Setup Ruby
+      - name: Setup Ruby, JRuby and TruffleRuby
         uses: ruby/setup-ruby@v1
         with:
           ruby-version: "3.3"
@@ -33,13 +33,18 @@ jobs:
         run: npm install -g uglify-js
       - name: Minify JS files
         run: uglifyjs assets/js/plugins/jquery.greedy-navigation.js assets/js/_main.js assets/js/theme.js -c -m -o assets/js/main.min.js
+      - name: Configure GitHub Pages
+        id: pages
+        continue-on-error: true
+        uses: actions/configure-pages@v6
+        with:
+          enablement: true
       - name: Build with Jekyll
         run: bundle exec jekyll build --baseurl "/LJT-Homepage"
         env:
           JEKYLL_ENV: production
       - name: Upload GitHub Pages artifact
         uses: actions/upload-pages-artifact@v3
-
   deploy:
     name: Deploy to GitHub Pages
     environment:
@@ -50,5 +55,4 @@ jobs:
     steps:
       - name: Deploy to GitHub Pages
         id: deployment
-        continue-on-error: true
         uses: actions/deploy-pages@v4
